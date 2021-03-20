@@ -1,0 +1,208 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    INSTITUTE OF PHYSICS PUBLISHING                                   %
+%                                                                      %
+%   `Preparing an article for publication in an Institute of Physics   %
+%    Publishing journal using LaTeX'                                   %
+%                                                                      %
+%    LaTeX source code `ioplau2e.tex' used to generate `author         %
+%    guidelines', the documentation explaining and demonstrating use   %
+%    of the Institute of Physics Publishing LaTeX preprint files       %
+%    `iopart.cls, iopart12.clo and iopart10.clo'.                      %
+%                                                                      %
+%    `ioplau2e.tex' itself uses LaTeX with `iopart.cls'                %
+%                                                                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+% First we have a character check
+%
+% ! exclamation mark    " double quote  
+% # hash                ` opening quote (grave)
+% & ampersand           ' closing quote (acute)
+% $ dollar              % percent       
+% ( open parenthesis    ) close paren.  
+% - hyphen              = equals sign
+% | vertical bar        ~ tilde         
+% @ at sign             _ underscore
+% { open curly brace    } close curly   
+% [ open square         ] close square bracket
+% + plus sign           ; semi-colon    
+% * asterisk            : colon
+% < open angle bracket  > close angle   
+% , comma               . full stop
+% ? question mark       / forward slash 
+% \ backslash           ^ circumflex
+%
+% ABCDEFGHIJKLMNOPQRSTUVWXYZ 
+% abcdefghijklmnopqrstuvwxyz 
+% 1234567890
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\documentclass[12pt]{iopart}
+%\newcommand{\gguide}{{\it Preparing graphics for IOP Publishing journals}}
+%Uncomment next line if AMS fonts required
+%\usepackage{iopams}  
+\usepackage[thinlines]{easytable}
+\begin{document}
+
+\title[Drift velocities in plasmas]{Drift velocities in plasmas}
+
+\author{John "Jack" Brooks}
+
+%\address{}
+\ead{jwbrooks0@gmail.com}
+\vspace{10pt}
+\begin{indented}
+\item[]March 2021
+\end{indented}
+
+%\begin{abstract}
+%\end{abstract}
+
+%
+% Uncomment for keywords
+%\vspace{2pc}
+%\noindent{\it Keywords}: XXXXXX, YYYYYYYY, ZZZZZZZZZ
+%
+% Uncomment for Submitted to journal title message
+%\submitto{\JPA}
+%
+% Uncomment if a separate title page is required
+%\maketitle
+% 
+% For two-column output uncomment the next line and choose [10pt] rather than [12pt] in the \documentclass declaration
+%\ioptwocol
+%
+
+
+
+\section{Motion in a uniform $\mathbf{B}$ field}
+
+Plasma consists of a collection of positively and negatively charged particles (ions and electrons).  When a uniform magnetic field is applied, $\mathbf{B}$, the plasma is considered magnetized, and the charged particles (plasma) oscillate around the magnetic field lines.  For this work, we define the unit vector associated with the uniform $\mathbf{B}$ to be the parallel, $||$, direction, and everything else as being the cross-field, $\perp$, direction.
+
+The equation of motion of moving charged particles in a magnetic field is
+\begin{equation}
+\label{eq:eom_simple}
+m \dot{\mathbf{v}} = q \mathbf{v} \times \mathbf{B}
+\end{equation}
+We note that the only non-trivial solution of $\mathbf{v}$ is the cross-field velocity, $\mathbf{v}_\perp$, and therefore we replace $\mathbf{v}$ with $\mathbf{v}_\perp$.  
+
+To solve for $\mathbf{v}_\perp$, we take the time derivative of Eq.~\ref{eq:eom_simple} and plug Eq.~\ref{eq:eom_simple} into it.  This provides
+\begin{equation*}
+\label{eq:eom_simple_2}
+\ddot{\mathbf{v}}_\perp = \frac{q^2}{m^2} \left (\mathbf{v}_\perp \times \mathbf{B}  \right) \times \mathbf{B}.
+\end{equation*}
+Expanding the triple product using BAC-CAB triple product rule provides
+\begin{equation*}
+\label{eq:eom_simple_3}
+\ddot{\mathbf{v}}_\perp = -\frac{q^2}{m^2} \left (B^2 \mathbf{v}_\perp - \left( \mathbf{B} \cdot \mathbf{v}_\perp \right) \mathbf{B} \right).
+\end{equation*}
+Recognizing that $\mathbf{B} \cdot \mathbf{v}_\perp = 0$, this simplifies to 
+\begin{equation*}
+%\label{eq:eom_simple_3}
+\ddot{\mathbf{v}}_\perp = -\left(\frac{qB}{m}\right)^2 \mathbf{v}_\perp 
+\end{equation*}
+and therefore the velocity has the solution
+\begin{equation}
+\label{eq:velocity_solved}
+\mathbf{v}_\perp = v_\perp(0) e^{i \left(qB/m\right) t}.
+\end{equation}
+
+Integrating Eq.~\ref{eq:velocity_solved}, we can solve for the position to be
+
+\begin{equation}
+%\label{eq:eom_simple_3}
+\mathbf{x}_\perp = \frac{v_\perp(0) m}{|q|B} e^{i \left(qB/m\right) t}.
+\end{equation}
+From this equation, we can identify the gryo-radius (the radius of the circle created by the gyrating particle) to be
+
+\begin{equation}
+%\label{eq:gyro-radius}
+r_{gyro} = \frac{v_\perp m}{|q|B}
+\end{equation}
+and the gyro-frequency (the frequency of gyration) to be
+
+\begin{equation}
+%\label{eq:gyro-radius}
+\omega_{gyro} = \frac{qB}{m}.
+\end{equation}
+This derivation informs us that the plasma rotates around the magnetic field line and is effectively trapped to the magnetic field without the presence of external forces.  
+
+
+\section{External forces cause a net drift velocity on the plasma}
+
+When an external force is applied to the plasma, it develops an net drift motion (a drift velocity).  Example forces include gravity, Coulomb force, kinetic pressure, etc.  
+
+To calculate the impact of a force on the plasma, we include an unspecified force, $\mathbf{F}$, to our equation of motion (EoM),
+\begin{equation*}
+%\label{eq:eom_simple}
+m \dot{\mathbf{v}} = q \mathbf{v}_\perp \times \mathbf{B} + \mathbf{F}.
+\end{equation*}
+In addition, we ignore gyromotion and focus on steady-state ``drift'' velocities by time-averaging the EoM over a time much larger than a full gyro-rotation.  The EoM therefore simplifies to
+\begin{equation*}
+%\label{eq:eom_simple}
+0 = q \mathbf{v}_\perp \times \mathbf{B} + \mathbf{F}.
+\end{equation*}
+
+We next solve for $\mathbf{v}_\perp (\mathbf{F})$ by multiplying the cross product of $\mathbf{B}$ throughout, performing the BAC-CAB triple product expansion rule, and recognizing that $\mathbf{B} \cdot \mathbf{v}_\perp = 0$.  We finally arrive at 
+\begin{equation}
+\label{eq:drift_velocity_generic}
+\mathbf{v}_\perp = \frac{\mathbf{F} \times \mathbf{B}}{q \left | B \right|^2}
+\end{equation}
+
+Most drift velocities (perhaps all) can be solved as a special case of the generalized velocity, Eq.~\ref{eq:drift_velocity_generic}, and I personally find it easier to conceptualize each of these drift velocities by considering the force that originally created them.  However, many plasma references prefer a more traditional approach and instead derive them from scratch.  
+
+
+\section{Specific drift velocities}
+
+Now that we have a generic expression for how forces create a net plasma drift velocity (Eq.~\ref{eq:drift_velocity_generic}), the next step is to identify common forces and plug them in.  I've done this for you in Table~\ref{tab:drift_summary} which shows examples of several common forces and their resulting drift velocities.  As an example, the Coulomb force results in an $\mathbf{E} \times \mathbf{B} $ drift that has a net motion that is orthogonal to both $\mathbf{E}$ and $\mathbf{B}$.  Because it has no dependence of charge, $q$, and both ions and electrons therefore move in the same direction when exposed to a net electric field.  The other drift velocities, e.g. the gravitational drift, is dependent on the plasma charge, $q$, and this means that most forces result in ions and electrons travelling in opposite directions.  
+
+\renewcommand{\arraystretch}{1.5} %% Increases row height in the table
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\multicolumn{2}{|c|}{\textbf{Force}, $\mathbf{F}$}    & \multicolumn{2}{c|}{\textbf{Resulting drift velocity}, $\mathbf{v}_\perp$} \\ \hline 
+\textbf{Name}       & \textbf{Equation} & \textbf{Name}       & \textbf{Equation}      \\ \hline
+Gravity             & $m\mathbf{g}$                &      Gravitational drift               &           $\frac{m \mathbf{g} \times \mathbf{B}}{qB^2}$             \\ \hline
+Coulomb force      & $q\mathbf{E}$                &       E ``cross'' B drift              &      $\frac{ \mathbf{E} \times \mathbf{B}}{B^2}$                      \\ \hline
+Kinetic pressure    &          $\frac{ - \nabla P}{n}$         &        Diamagnetic drift             &     $-\frac{ \nabla P \times \mathbf{B}}{nqB^2}$                       \\ \hline
+Magnetic dipole restoring force     &   $-\frac{mv_\perp^2}{2B} \nabla B$                &     ``Grad'' B drift                &           $\frac{m v_\perp^2}{2qB}\frac{\mathbf{B} \times \nabla B}{B^2}$             \\ \hline
+Centripetal force          & $\frac{mv_{||}^2}{\mathbf{r}}$          &         Curvature drift            &       $ m v_{||}^2 \frac{\mathbf{r}\times\mathbf{B}}{qB^2r^2}$              \\ \hline
+Oscillating E field & $-\frac{m\mathbf{B}\times\mathbf{\dot{E}}}{B^2}$      &    Polarization drift                 &  $\frac{m \mathbf{\dot{E}}}{qB^2} $                      \\ \hline
+\end{tabular}
+\caption{\label{tab:drift_summary}List of forces that can act on a plasma and their resulting drift velocity. }
+\end{table}
+
+Several of the other forces are somewhat nuanced and require a little more context.  The diamagnetic drift is due to resulting force from kinetic pressure (i.e. collisions between particles) in the plasma.  The $\nabla B$ drift is created charged particle gyro-motion around a  non-uniform $\mathbf{B}$ which results in a restoring magnetic dipole force.  Curvature drift occurs when the magnetic field line is curved and the plasma particle (which is mostly trapped to the field line) is forced to bend along with the field line.  
+
+The force responsible for the polarization drift is less straight forward.  In this case, the electric field, $\mathbf{E}$, is changing as a function of time.  The resulting force can be derived from the lorentz Force,
+
+\begin{equation*}
+\mathbf{E} = - \mathbf{v} \times \mathbf{B},
+\end{equation*}
+taking the time derivative and multiplying my the mass,
+\begin{equation*}
+\mathbf{m\mathbf{\dot{E}}} = - m\mathbf{\dot{v}} \times \mathbf{B} = - \mathbf{F} \times \mathbf{B},
+\end{equation*}
+crossing both sides with $\mathbf{B}$ and using the BAC-CAB rule to get 
+\begin{equation}
+\mathbf{F} = - \frac{m \mathbf{B} \times \mathbf{\dot{E}}}{B^2}.
+\end{equation}
+
+The drift velocities discussed here are merely the motions that are typically covered by plasma physics textbooks, and more complicated motions exist.  These include those from radiation pressure and more complex collision models.  In addition, higher order corrections exist to the drift velocities discussed here when the various forces are not constant in time and space.  
+
+\section{Plasma currents}
+
+Because of the $q$ dependence in most of the drift velocities in Table~\ref{tab:drift_summary}, ions and electrons move in opposite directions under these forces.  Therefore, these drift velocities also create electrical current in the plasma.  The exception to this is the $\mathbf{E} \times \mathbf{B}$ drift velocity. 
+
+\section*{References}
+\begin{thebibliography}{widest entry}
+\bibitem{deBlank} de Blank, H.J., ``Guiding Center Motion'', Personal notes: $https://juser.fz-juelich.de/record/283631/files/DeBlank_BT-1-2.pdf$
+\end{thebibliography}
+
+
+\end{document}
+
+
