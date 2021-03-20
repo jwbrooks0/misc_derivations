@@ -1,0 +1,80 @@
+%This is my super simple Real Analysis Homework template
+
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[]{amsthm} %lets us use \begin{proof}
+\usepackage[]{amssymb} %gives us the character \varnothing
+\usepackage{amsmath}
+
+\title{Debye length}
+\author{John ``Jack'' Brooks}
+\date\today
+%This information doesn't actually show up on your document unless you use the maketitle command below
+
+\begin{document}
+	
+	
+\maketitle %This command prints the title based on information entered above
+	
+
+
+\section{Debye length derivation}
+The Debye length is the scale length associated with plasma screening out external electric fields, $\mathbf{E}$.  To show this, we start with Gauss's law and convert $\mathbf{E}$ to potential, $\phi$ with $\mathbf{E} = - \nabla \phi$.  
+
+\begin{equation}
+\begin{split}
+	%\label{eq:asdf}
+	\nabla^2 \phi &= \frac{1}{\epsilon_0}\left( \rho_{plasma} \right) \\
+	&= \frac{1}{\epsilon_0}\left[ q n_0 \, \textrm{exp} \left( \frac{-q \phi (r)}{k_b T} \right)\right] 
+\end{split}
+\end{equation}
+where and the plasma charge is assuming a Boltzmann distribution.  
+
+If we assume that $k_bT \gg q\phi$, then we can Taylor expand the exponential term to get
+\begin{equation}
+\begin{split}
+%\label{eq:asdf}
+\nabla^2 \phi = \frac{1}{\epsilon_0}\left[ q n_0 \,  \left(1- \frac{q \phi (r)}{k_b T} \right)\right]
+\end{split}
+\end{equation}
+Assuming that we have equal ion and electron charge density, $q_e n_{oe}$ cancels with $q_i n_{oi}$ leaving
+\begin{equation}
+\begin{split}
+%\label{eq:asdf}
+\nabla^2 \phi = \frac{1}{\epsilon_0}\left[ -   \frac{q^2 n_0 \phi (r)}{k_b T}  \right].
+\end{split}
+\end{equation}
+The solution to this is 
+\begin{equation}
+\begin{split}
+\phi &= \phi_0 \, \textrm{exp} \left( -r / \left( \frac{q^2n_0}{\epsilon_0 k_b T} \right)^{1/2} \right) \\
+ &= \phi_0 \, \textrm{exp} \left( -r /\lambda_D^{1/2} \right)
+\end{split}
+\end{equation}
+where the scale length, 
+\begin{equation}
+\begin{split}
+ \lambda_D =  \left( \frac{q^2n_0}{\epsilon_0 k_b T} \right)^{1/2},
+\end{split}
+\end{equation}
+is called the Debye length.
+
+\section{Debye length screening}
+
+If we now include a test charge, $Q_{tc}$, to our Gauss's law equation,
+\begin{equation}
+\begin{split}
+%\label{eq:asdf}
+\nabla^2 \phi &= \frac{1}{\epsilon_0}\left( \rho_{plasma} - \rho_{tc}\right) \\
+&= \frac{1}{\lambda_D^2}\phi - \frac{Q_{tc}}{\epsilon_0}\delta (r-r_0)
+\end{split}
+\end{equation}
+we can now investigate how the plasma screens out this charge.
+
+TODO
+
+\end{document}
+
+
